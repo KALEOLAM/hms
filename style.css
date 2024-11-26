@@ -58,39 +58,25 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  width: 100%;
-  overflow-y: auto;
 }
 
 header {
   text-align: center;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.header-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  max-width: 600px;
+  margin-bottom: 20px;
 }
 
 header h1 {
   font-size: 2.5rem;
   color: #003366;
-  margin-bottom: 10px;
 }
 
 .current-time {
   font-size: 1.2rem;
-  color: #00509e;
   margin-top: 10px;
+  color: #00509e;
 }
 
+/* 左側日曆 */
 .calendar {
   background-color: #fff;
   padding: 20px;
@@ -114,6 +100,20 @@ header h1 {
   font-weight: bold;
 }
 
+/* 右側待辦事項 */
+.right-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h2 {
+  font-size: 1.8rem;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
 .task-list {
   list-style: none;
   padding: 0;
@@ -132,9 +132,8 @@ footer img {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
-  .header-content {
-    padding: 15px;
-    max-width: 500px;
+  .container {
+    padding: 10px;
   }
 
   header h1 {
@@ -144,12 +143,15 @@ footer img {
   .current-time {
     font-size: 1rem;
   }
+
+  .task-list li {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .header-content {
+  .container {
     padding: 10px;
-    max-width: 100%;
   }
 
   header h1 {
