@@ -9,9 +9,70 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
   color: #333;
-  line-height: 1.6;
 }
 
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.login-container h1 {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.login-btn {
+  padding: 10px 20px;
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #00509e;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  display: none;
+}
+
+/* Main Content Styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -25,10 +86,8 @@ header {
 
 header h1 {
   color: #003366;
-  font-size: 2rem;
 }
 
-/* Main Content */
 .content {
   display: flex;
   gap: 20px;
@@ -36,66 +95,12 @@ header h1 {
 
 .left-section, .right-section {
   flex: 1;
-  padding: 20px;
   background: #fff;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.left-section {
-  text-align: center;
-}
-
-.left-section h2 {
-  margin-bottom: 10px;
-}
-
-.calendar {
-  margin-top: 20px;
-}
-
-.calendar table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.calendar th, .calendar td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-.calendar .today {
-  background-color: #ffd700;
-}
-
-/* Right Section */
-.right-section h2 {
-  margin-bottom: 10px;
-}
-
-.right-section ul {
-  list-style: none;
-}
-
-.right-section ul li {
-  margin-bottom: 10px;
-}
-
-.right-section ul ul {
-  margin-top: 5px;
-  padding-left: 20px;
-  list-style: disc;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-footer img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+.hidden {
+  display: none;
 }
