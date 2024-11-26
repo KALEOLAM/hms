@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4C Homework Management System</title>
+  <title>Maryknoll Homework Management System</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
@@ -11,15 +11,15 @@
 <body>
   <!-- Login Page -->
   <div class="login-container" id="login-container">
-    <h1>4C 家課管理系統</h1>
+    <h1>Maryknoll 家課管理系統</h1>
     <p>請輸入用戶名和密碼以登入</p>
     <form id="login-form">
       <div class="input-group">
-        <label for="username">Username 用戶名 :</label>
+        <label for="username">用戶名</label>
         <input type="text" id="username" name="username" required>
       </div>
       <div class="input-group">
-        <label for="password">Password 密碼 :</label>
+        <label for="password">密碼</label>
         <input type="password" id="password" name="password" required>
       </div>
       <button type="submit" class="login-btn">登入</button>
@@ -30,14 +30,14 @@
   <!-- Main Content -->
   <div class="container hidden" id="main-container">
     <header>
-      <h1>4C Homework Management System</h1>
+      <h1>Maryknoll Homework Management System</h1>
       <div class="current-time" id="current-time"></div>
     </header>
     <div class="content">
       <!-- Left Section: Calendar -->
       <div class="left-section">
         <div class="class-info">
-          <h2>4C 班</h2>
+          <h2>3C 班教師名單</h2>
         </div>
         <div class="calendar">
           <h3 id="current-month">Loading...</h3>
@@ -48,23 +48,24 @@
       <!-- Right Section: To-do List -->
       <div class="right-section">
         <h2>家課記錄</h2>
-        <ul class="task-list" id="homework-list">
-          <!-- 家課記錄將會從資料庫動態載入 -->
+        <ul class="task-list">
+          <li><strong>地理 (T35)</strong><br>工作紙（第3頁）</li>
+          <li><strong>數學 (T13)</strong><br>工作紙 考試溫習題p.1-12</li>
+          <li><strong>英國語文 (T45)</strong>
+            <ul>
+              <li>家課 Speaking Recording (Teams 提交音檔)</li>
+              <li>家課 Reading (教科書 P.39)</li>
+              <li>家課 Speaking Script (參訪當地小學)</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
-
-    <!-- Database Connection Status -->
-    <div class="status-container">
-      <p id="db-status" class="db-status">資料庫狀態 : 🩷 連接中...</p>
-    </div>
-
     <footer>
       <img src="images/school_building.png" alt="校舍圖片" class="background-img">
-      <p>© 2024 4C Homework Management System</p>
+      <p>© 2024 Maryknoll Homework Management System</p>
     </footer>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
