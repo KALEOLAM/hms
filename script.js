@@ -1,9 +1,9 @@
-// 模拟用户数据
+// 模擬用戶數據
 const users = {
   user: "password",
 };
 
-// 登录表单逻辑
+// 登入表單邏輯
 document.getElementById("login-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const username = document.getElementById("username").value;
@@ -16,14 +16,14 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
     initCalendar();
     updateTime();
     setInterval(updateTime, 1000);
-    loadHomeworkData(); // 登录成功后加载家课数据
+    loadHomeworkData(); // 登入成功後加載家課資料
   } else {
     errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
     errorMessage.style.display = "block";
   }
 });
 
-// 动态生成日历
+// 動態生成日曆
 function initCalendar() {
   const today = new Date();
   const currentMonth = today.toLocaleString("zh-Hant", { month: "long" });
@@ -55,7 +55,7 @@ function initCalendar() {
   table.appendChild(row);
 }
 
-// 更新香港时间
+// 更新香港時間
 function updateTime() {
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" }));
   const timeString = now.toLocaleTimeString("zh-Hant", { hour12: false });
@@ -63,31 +63,28 @@ function updateTime() {
   document.getElementById("current-time").textContent = `${dateString} ${timeString}`;
 }
 
-// 加载家课数据
+// 加載家課資料
 function loadHomeworkData() {
-  fetch('/api/homework')
-    .then(response => response.json())
-    .then(data => {
-      const homeworkList = document.getElementById("homework-list");
-      homeworkList.innerHTML = ''; // 清空现有的列表
-      if (data.length > 0) {
-        data.forEach(homework => {
-          const li = document.createElement("li");
-          li.innerHTML = `<strong>${homework.subject} (${homework.class})</strong><br>${homework.description}`;
-          homeworkList.appendChild(li);
-        });
-      } else {
-        const li = document.createElement("li");
-        li.textContent = "今天沒有家課。";
-        homeworkList.appendChild(li);
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching homework data:', error);
-      const homeworkList = document.getElementById("homework-list");
+  // 模擬靜態的家課數據
+  const homeworkData = [
+    { subject: "地理", class: "T35", description: "工作紙（第3頁）" },
+    { subject: "數學", class: "T13", description: "工作紙 考試溫習題p.1-12" },
+    { subject: "英國語文", class: "T45", description: "家課 Speaking Recording (Teams 提交音檔)" },
+    { subject: "英國語文", class: "T45", description: "家課 Reading (教科書 P.39)" },
+    { subject: "英國語文", class: "T45", description: "家課 Speaking Script (參訪當地小學)" }
+  ];
+
+  const homeworkList = document.getElementById("homework-list");
+  homeworkList.innerHTML = ''; // 清空現有的列表
+  if (homeworkData.length > 0) {
+    homeworkData.forEach(homework => {
       const li = document.createElement("li");
-      li.textContent = "無法加載家課資料";
+      li.innerHTML = `<strong>${homework.subject} (${homework.class})</strong><br>${homework.description}`;
       homeworkList.appendChild(li);
-      document.getElementById("db-status").textContent = "資料庫狀態 : 🔴 連接失敗";
     });
+  } else {
+    const li = document.createElement("li");
+    li.textContent = "今天沒有家課。";
+    homeworkList.appendChild(li);
+  }
 }
