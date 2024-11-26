@@ -1,45 +1,73 @@
-<!-- 登录页面 -->
-<div class="login-container" id="login-container">
-  <h1>Maryknoll 家課管理系統</h1>
-  <p>請輸入用戶名和密碼以登入</p>
-  <form id="login-form">
-    <div class="input-group">
-      <label for="username">用戶名</label>
-      <input type="text" id="username" name="username" required>
-    </div>
-    <div class="input-group">
-      <label for="password">密碼</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit" class="login-btn">登入</button>
-    <p id="error-message" class="error-message"></p>
-  </form>
-</div>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maryknoll Homework Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-container" id="login-container">
+    <h1>Maryknoll 家課管理系統</h1>
+    <p>請輸入用戶名和密碼以登入</p>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">用戶名</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="login-btn">登入</button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+  </div>
 
-<!-- 主内容 (默认隐藏) -->
-<div class="container hidden" id="main-container">
-  <header>
-    <h1>Maryknoll Homework Management System</h1>
-    <div class="current-time" id="current-time"></div>
-  </header>
-  <div class="content">
-    <div class="left-section">
-      <h2>日曆</h2>
-      <div id="calendar-container">
-        <h3 id="current-month">正在加載...</h3>
-        <table id="calendar-table"></table>
+  <!-- Main Content (Hidden by default) -->
+  <div class="container hidden" id="main-container">
+    <header>
+      <h1>Maryknoll Homework Management System</h1>
+      <div class="current-time" id="current-time"></div>
+    </header>
+    <div class="content">
+      <!-- Left Section: Calendar -->
+      <div class="left-section">
+        <div class="class-info">
+          <h2>3C 班教師名單</h2>
+        </div>
+        <div class="calendar">
+          <h3 id="current-month">Loading...</h3>
+          <table id="calendar-table">
+            <!-- Calendar content dynamically generated -->
+          </table>
+        </div>
+      </div>
+      
+      <!-- Right Section: To-do List -->
+      <div class="right-section">
+        <h2>家課記錄</h2>
+        <ul class="task-list">
+          <li><strong>地理 (T35)</strong><br>工作紙（第3頁）</li>
+          <li><strong>數學 (T13)</strong><br>工作紙 考試溫習題p.1-12</li>
+          <li><strong>英國語文 (T45)</strong>
+            <ul>
+              <li>家課 Speaking Recording (Teams 提交音檔)</li>
+              <li>家課 Reading (教科書 P.39)</li>
+              <li>家課 Speaking Script (參訪當地小學)</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="right-section">
-      <h2>家課記錄</h2>
-      <ul class="task-list">
-        <li><strong>地理</strong>：工作紙（第3頁）</li>
-        <li><strong>數學</strong>：考試溫習題 p.1-12</li>
-        <li><strong>英語</strong>：錄音及閱讀作業</li>
-      </ul>
-    </div>
+    <footer>
+      <img src="images/school_building.png" alt="校舍圖片">
+      <p>© 2024 Maryknoll Homework Management System</p>
+    </footer>
   </div>
-  <footer>
-    <p>© 2024 Maryknoll Homework Management System</p>
-  </footer>
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
