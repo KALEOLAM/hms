@@ -76,6 +76,8 @@ async function fetchHomework() {
     console.error('獲取家課資料失敗:', error);
     const homeworkList = document.getElementById('homework-list');
     homeworkList.innerHTML = `<li>無法加載家課資料: ${error.message}</li>`;  // 顯示錯誤消息
+    // 確保其他部分頁面依然顯示
+    document.getElementById("main-container").classList.remove("hidden");
   }
 }
 
