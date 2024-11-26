@@ -10,6 +10,39 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 使背景圖片的偽元素定位相對 */
+}
+
+/* 背景圖片處理 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('images/school_building.png'); /* 加載背景圖片 */
+  background-size: cover;  /* 使圖片覆蓋整個背景 */
+  background-position: center; /* 使圖片居中顯示 */
+  filter: blur(10px); /* 模糊背景 */
+  z-index: -1; /* 確保背景圖片在內容之後 */
+}
+
+/* 遮罩層 */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* 半透明黑色遮罩層 */
+  z-index: -1; /* 放在背景下方 */
 }
 
 /* 登入頁面 */
@@ -18,9 +51,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #e9f0fa;
   text-align: center;
+  z-index: 10;
+  position: relative; /* 確保內容層在背景之上 */
 }
 
 .hidden {
@@ -29,7 +62,7 @@ body {
 
 .login-container h1 {
   font-size: 2.5rem;
-  color: #003366;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -98,67 +131,4 @@ header h1 {
 .calendar .today {
   background-color: #ffe599;
   font-weight: bold;
-}
-
-/* 右側待辦事項 */
-.right-section {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.right-section h2 {
-  font-size: 1.8rem;
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-.task-list {
-  list-style: none;
-  padding: 0;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-footer img {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  .current-time {
-    font-size: 1rem;
-  }
-
-  .task-list li {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  .current-time {
-    font-size: 0.9rem;
-  }
 }
