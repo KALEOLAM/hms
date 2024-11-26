@@ -1,63 +1,54 @@
-// 模擬用戶數據
-const users = {
-  user: "password",
-};
-
-// 登入表單邏輯
-document.getElementById("login-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("login-form");
   const errorMessage = document.getElementById("error-message");
+  const loginContainer = document.getElementById("login-container");
+  const mainContainer = document.getElementById("main-container");
 
-  if (users[username] && users[username] === password) {
-    document.getElementById("login-container").classList.add("hidden");
-    document.getElementById("main-container").classList.remove("hidden");
-    initCalendar();
-    updateTime();
-    setInterval(updateTime, 1000);
-  } else {
-    errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
-    errorMessage.style.display = "block";
-  }
-});
+  // 預設的用戶名與密碼
+  const VALID_USERNAME = "user";
+  const VALID_PASSWORD = "password";
 
-// 動態生成日曆
-function initCalendar() {
-  const today = new Date();
-  const currentMonth = today.toLocaleString("zh-Hant", { month: "long" });
-  const year = today.getFullYear();
-  const firstDay = new Date(year, today.getMonth(), 1).getDay();
-  const daysInMonth = new Date(year, today.getMonth() + 1, 0).getDate();
+  // 表單提交事件
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // 防止表單默認提交行為
 
-  document.getElementById("current-month").textContent = `${currentMonth} ${year}`;
-  const table = document.getElementById("calendar-table");
-  table.innerHTML = "<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>";
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  let row = document.createElement("tr");
-  for (let i = 0; i < firstDay; i++) {
-    row.appendChild(document.createElement("td"));
-  }
+    // 驗證用戶名與密碼
+    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+      // 隱藏登入畫面，顯示主介面
+      loginContainer.classList.add("hidden");
+      mainContainer.classList.remove("hidden");
 
-  for (let day = 1; day <= daysInMonth; day++) {
-    const cell = document.createElement("td");
-    cell.textContent = day;
-    if (day === today.getDate()) {
-      cell.classList.add("today");
+      // 更新時間與日曆
+      updateTime();
+      generateCalendar();
+    } else {
+      // 顯示錯誤訊息
+      errorMessage.textContent = "用戶名或密碼錯誤，請再試一次！";
     }
-    row.appendChild(cell);
-    if ((firstDay + day) % 7 === 0) {
-      table.appendChild(row);
-      row = document.createElement("tr");
-    }
-  }
-  table.appendChild(row);
-}
+  });
 
-// 更新香港時間
-function updateTime() {
-  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" }));
-  const timeString = now.toLocaleTimeString("zh-Hant", { hour12: false });
-  const dateString = now.toLocaleDateString("zh-Hant", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-  document.getElementById("current-time").textContent = `${dateString} ${timeString}`;
-}
+  // 時間更新函數
+  function updateTime() {
+    const currentTimeElement = document.getElementById("current-time");
+    setInterval(() => {
+      const now = new Date();
+      const options = {
+        timeZone: "Asia/Hong_Kong",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      };
+      currentTimeElement.textContent = new Intl.DateTimeFormat("zh-Hant", options).format(now);
+    }, 1000);
+  }
+
+  // 動態生成日曆
+  function generateCalendar() {
+    const calendarTable = document.getElementById("calendar-table");
+    
