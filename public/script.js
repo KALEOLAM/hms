@@ -1,8 +1,3 @@
-// 模擬用戶數據
-const users = {
-  user: "password",
-};
-
 // 登入表單邏輯
 document.getElementById("login-form").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -10,17 +5,28 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   const password = document.getElementById("password").value;
   const errorMessage = document.getElementById("error-message");
 
-  if (users[username] && users[username] === password) {
-    document.getElementById("login-container").classList.add("hidden");
-    document.getElementById("main-container").classList.remove("hidden");
-    initCalendar();
-    updateTime();
-    setInterval(updateTime, 1000);
-    loadHomeworkData(); // 登入成功後加載家課資料
-  } else {
-    errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
-    errorMessage.style.display = "block";
-  }
+  // 透過 POST 請求進行登入驗證
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      document.getElementById("login-container").classList.add("hidden");
+      document.getElementById("main-container").classList.remove("hidden");
+      initCalendar();
+      updateTime();
+      setInterval(updateTime, 1000);
+      loadHomeworkData(); // 登入成功後加載家課資料
+    } else {
+      errorMessage.textContent = data.message;
+      errorMessage.style.display = "block";
+    }
+  });
 });
 
 // 動態生成日曆
@@ -65,26 +71,22 @@ function updateTime() {
 
 // 加載家課資料
 function loadHomeworkData() {
-  // 模擬靜態的家課數據
-  const homeworkData = [
-    { subject: "地理", class: "T35", description: "工作紙（第3頁）" },
-    { subject: "數學", class: "T13", description: "工作紙 考試溫習題p.1-12" },
-    { subject: "英國語文", class: "T45", description: "家課 Speaking Recording (Teams 提交音檔)" },
-    { subject: "英國語文", class: "T45", description: "家課 Reading (教科書 P.39)" },
-    { subject: "英國語文", class: "T45", description: "家課 Speaking Script (參訪當地小學)" }
-  ];
-
-  const homeworkList = document.getElementById("homework-list");
-  homeworkList.innerHTML = ''; // 清空現有的列表
-  if (homeworkData.length > 0) {
-    homeworkData.forEach(homework => {
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${homework.subject} (${homework.class})</strong><br>${homework.description}`;
-      homeworkList.appendChild(li);
+  // 透過 GET 請求從後端加載家課資料
+  fetch('/api/homework')
+    .then(response => response.json())
+    .then(homeworkData => {
+      const homeworkList = document.getElementById("homework-list");
+      homeworkList.innerHTML = ''; // 清空現有的列表
+      if (homeworkData.length > 0) {
+        homeworkData.forEach(homework => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${homework.subject} (${homework.class})</strong><br>${homework.description}`;
+          homeworkList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "今天沒有家課。";
+        homeworkList.appendChild(li);
+      }
     });
-  } else {
-    const li = document.createElement("li");
-    li.textContent = "今天沒有家課。";
-    homeworkList.appendChild(li);
-  }
 }
