@@ -16,6 +16,7 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
     initCalendar();
     updateTime();
     setInterval(updateTime, 1000);
+    fetchHomework();  // 登入後立即從資料庫拉取當天家課
   } else {
     errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
     errorMessage.style.display = "block";
@@ -60,4 +61,37 @@ function updateTime() {
   const timeString = now.toLocaleTimeString("zh-Hant", { hour12: false });
   const dateString = now.toLocaleDateString("zh-Hant", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
   document.getElementById("current-time").textContent = `${dateString} ${timeString}`;
+}
+
+// 從資料庫獲取當天的家課紀錄
+async function fetchHomework() {
+  try {
+    const response = await fetch('/api/homework');  // 假設 API 路徑是 /api/homework
+    if (response.ok) {
+      const homeworkData = await response.json();
+      displayHomework(homeworkData);
+    } else {
+      throw new Error('無法獲取家課資料');
+    }
+  } catch (error) {
+    console.error('獲取家課資料失敗:', error);
+    const homeworkList = document.getElementById('homework-list');
+    homeworkList.innerHTML = '<li>無法加載家課資料</li>';
+  }
+}
+
+// 顯示家課紀錄
+function displayHomework(homeworkData) {
+  const homeworkList = document.getElementById('homework-list');
+  homeworkList.innerHTML = '';  // 清空原有列表
+
+  if (homeworkData && homeworkData.length > 0) {
+    homeworkData.forEach(homework => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<strong>${homework.subject}</strong><br>${homework.assignment}`;
+      homeworkList.appendChild(listItem);
+    });
+  } else {
+    homeworkList.innerHTML = '<li>今天沒有家課紀錄</li>';
+  }
 }
