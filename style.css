@@ -10,6 +10,7 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
+  overflow: hidden; /* 防止未登入時滾動 */
 }
 
 /* 登入頁面 */
@@ -79,6 +80,7 @@ body {
   display: flex;
   flex-direction: column; /* 改為垂直排列 */
   align-items: center;
+  width: 100%;
 }
 
 header {
@@ -103,7 +105,8 @@ header h1 {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%; /* 確保日曆區域佔據整個可用寬度 */
+  width: 100%;
+  max-width: 800px; /* 增加日曆的最大寬度 */
   margin-bottom: 20px; /* 日曆與下方家課紀錄間的間距 */
 }
 
@@ -129,7 +132,8 @@ header h1 {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%; /* 確保家課紀錄區域佔據整個可用寬度 */
+  width: 100%;
+  max-width: 800px; /* 增加家課紀錄的最大寬度 */
 }
 
 .right-section h2 {
@@ -206,4 +210,16 @@ footer {
   margin-top: 20px;
   position: relative;
   z-index: 2;
+}
+
+/* 響應式設計：手機設備 */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* 手機上減少填充 */
+  }
+
+  .calendar, .right-section {
+    max-width: 100%; /* 手機上寬度全佔 */
+    margin-bottom: 15px; /* 調整日曆與家課紀錄的間距 */
+  }
 }
