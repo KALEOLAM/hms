@@ -51,4 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 動態生成日曆
   function generateCalendar() {
     const calendarTable = document.getElementById("calendar-table");
-    
+    const date = new Date();
+    const currentMonth = date.toLocaleString("zh-Hant", { month: "long" });
+    const currentYear = date.getFullYear
