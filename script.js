@@ -14,11 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password").value.trim();
 
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-      // 切換到主界面
       loginContainer.classList.add("hidden");
       mainContainer.classList.remove("hidden");
 
-      // 更新時間與日曆
       updateTime();
       generateCalendar();
     } else {
