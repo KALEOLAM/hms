@@ -11,11 +11,11 @@ body {
   color: #333;
   line-height: 1.6;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto; /* 解決無法滾動的問題 */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* 使背景圖片的偽元素定位相對 */
+  position: relative;
 }
 
 /* 背景圖片處理 */
@@ -26,11 +26,11 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('images/school_building.png'); /* 加載背景圖片 */
-  background-size: cover;  /* 使圖片覆蓋整個背景 */
-  background-position: center; /* 使圖片居中顯示 */
-  filter: blur(10px); /* 模糊背景 */
-  z-index: -1; /* 確保背景圖片在內容之後 */
+  background-image: url('images/school_building.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
 }
 
 /* 遮罩層 */
@@ -41,8 +41,8 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4); /* 半透明黑色遮罩層 */
-  z-index: -1; /* 放在背景下方 */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
 }
 
 /* 登入頁面 */
@@ -53,7 +53,11 @@ body::after {
   align-items: center;
   text-align: center;
   z-index: 10;
-  position: relative; /* 確保內容層在背景之上 */
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8); /* 使背景稍微透明 */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
@@ -62,7 +66,7 @@ body::after {
 
 .login-container h1 {
   font-size: 2.5rem;
-  color: #ffffff;
+  color: #003366;
   margin-bottom: 10px;
 }
 
@@ -72,11 +76,33 @@ body::after {
   width: 100%;
 }
 
+.input-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: #003366;
+  margin-bottom: 5px;
+}
+
 .input-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4d8af0; /* 淺藍色 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  background-color: #3b7ad8;
 }
 
 .error-message {
@@ -91,6 +117,7 @@ body::after {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  width: 100%;
 }
 
 header {
@@ -111,10 +138,16 @@ header h1 {
 
 /* 左側日曆 */
 .calendar {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar h3 {
+  font-size: 1.6rem;
+  color: #003366;
+  margin-bottom: 10px;
 }
 
 .calendar table {
@@ -129,6 +162,55 @@ header h1 {
 }
 
 .calendar .today {
-  background-color: #ffe599;
+  background-color: #c1e4fe;
   font-weight: bold;
+  color: #003366;
+}
+
+/* 家課記錄 */
+.right-section {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h2 {
+  font-size: 1.8rem;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+.task-list {
+  list-style: none;
+}
+
+.task-list li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.task-list strong {
+  color: #003366;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #003366;
+}
+
+footer img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+/* 設定網頁滾動 */
+html, body {
+  height: 100%;
+  overflow-y: auto;
 }
