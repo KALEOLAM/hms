@@ -6,9 +6,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Noto Serif SC', FangSong, "宋体", serif;
+  background-color: #f7f7fa;
   color: #333;
+  line-height: 1.6;
 }
 
 /* Login Page Styles */
@@ -18,18 +19,20 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: #e9f0fa;
+  text-align: center;
 }
 
 .login-container h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #003366;
   margin-bottom: 10px;
 }
 
 .login-container p {
-  color: #666;
+  color: #555;
   margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 .input-group {
@@ -54,7 +57,7 @@ body {
 
 .login-btn {
   padding: 10px 20px;
-  background-color: #003366;
+  background-color: #00509e;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -63,13 +66,14 @@ body {
 }
 
 .login-btn:hover {
-  background-color: #00509e;
+  background-color: #003366;
 }
 
 .error-message {
-  color: red;
+  color: #d9534f;
   margin-top: 10px;
   display: none;
+  font-weight: bold;
 }
 
 /* Main Content Styles */
@@ -79,12 +83,10 @@ body {
   padding: 20px;
 }
 
-header {
+header h1 {
   text-align: center;
   margin-bottom: 20px;
-}
-
-header h1 {
+  font-size: 2.5rem;
   color: #003366;
 }
 
@@ -98,9 +100,38 @@ header h1 {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.hidden {
-  display: none;
+.left-section h3, .right-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #00509e;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar table th, .calendar table td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.calendar .today {
+  background-color: #ffe599;
+  font-weight: bold;
+}
+
+.task-list li {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
 }
