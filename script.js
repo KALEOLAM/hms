@@ -4,33 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginContainer = document.getElementById("login-container");
   const mainContainer = document.getElementById("main-container");
 
-  // 預設的用戶名與密碼
   const VALID_USERNAME = "user";
   const VALID_PASSWORD = "password";
 
-  // 表單提交事件
   loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // 防止表單默認提交行為
+    event.preventDefault();
 
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    // 驗證用戶名與密碼
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-      // 隱藏登入畫面，顯示主介面
       loginContainer.classList.add("hidden");
       mainContainer.classList.remove("hidden");
 
-      // 更新時間與日曆
       updateTime();
       generateCalendar();
     } else {
-      // 顯示錯誤訊息
       errorMessage.textContent = "用戶名或密碼錯誤，請再試一次！";
     }
   });
 
-  // 時間更新函數
   function updateTime() {
     const currentTimeElement = document.getElementById("current-time");
     setInterval(() => {
@@ -48,9 +41,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
-  // 動態生成日曆
   function generateCalendar() {
     const calendarTable = document.getElementById("calendar-table");
-    const date = new Date();
-    const currentMonth = date.toLocaleString("zh-Hant", { month: "long" });
-    const currentYear = date.getFullYear
+    const currentMonthElement = document.getElementById("current-month");
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+
+    currentMonthElement.textContent = `${year} 年 ${month + 1} 月`;
+
+    calendarTable.innerHTML = "";
+
+    let dayCounter = 1;
+    for (let i = 0; i < 6; i++) {
+      const row = document.createElement("tr");
+      for (let j = 0; j < 7; j++) {
+        const cell = document.createElement("td");
+        if (i === 0 && j < firstDay || dayCounter > daysInMonth) {
+          cell.textContent = "";
+        } else {
+          cell.textContent = dayCounter;
+          if (dayCounter === now.getDate()) {
+            cell.style.backgroundColor = "#FFD700";
+          }
+          dayCounter++;
+        }
+        row.appendChild(cell);
+      }
+      calendarTable.appendChild(row);
+    }
+  }
+});
