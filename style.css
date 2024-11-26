@@ -76,6 +76,9 @@ body {
   padding: 20px;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column; /* 改為垂直排列 */
+  align-items: center;
 }
 
 header {
@@ -94,12 +97,14 @@ header h1 {
   color: #00509e;
 }
 
-/* 左側日曆 */
+/* 上方日曆 */
 .calendar {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* 確保日曆區域佔據整個可用寬度 */
+  margin-bottom: 20px; /* 日曆與下方家課紀錄間的間距 */
 }
 
 .calendar table {
@@ -118,13 +123,13 @@ header h1 {
   font-weight: bold;
 }
 
-/* 右側家課紀錄 */
+/* 下方家課紀錄 */
 .right-section {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 20px;
+  width: 100%; /* 確保家課紀錄區域佔據整個可用寬度 */
 }
 
 .right-section h2 {
