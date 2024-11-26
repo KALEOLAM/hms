@@ -10,7 +10,6 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
-  overflow: hidden; /* 防止未登入時滾動 */
 }
 
 /* 登入頁面 */
@@ -70,11 +69,6 @@ body {
   display: none;
 }
 
-/* 主頁面 - 隱藏 */
-#main-container {
-  display: none; /* 預設主頁隱藏 */
-}
-
 /* 主頁面 */
 .container {
   max-width: 1200px;
@@ -82,10 +76,6 @@ body {
   padding: 20px;
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column; /* 改為垂直排列 */
-  align-items: center;
-  width: 100%;
 }
 
 header {
@@ -104,15 +94,12 @@ header h1 {
   color: #00509e;
 }
 
-/* 上方日曆 */
+/* 左側日曆 */
 .calendar {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px; /* 增加日曆的最大寬度 */
-  margin-bottom: 20px; /* 日曆與下方家課紀錄間的間距 */
 }
 
 .calendar table {
@@ -129,73 +116,6 @@ header h1 {
 .calendar .today {
   background-color: #ffe599;
   font-weight: bold;
-}
-
-/* 下方家課紀錄 */
-.right-section {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px; /* 增加家課紀錄的最大寬度 */
-}
-
-.right-section h2 {
-  font-size: 2rem;
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-ul.task-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul.task-list li {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-ul.task-list li strong {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-ul.task-list li ul {
-  margin-top: 5px;
-}
-
-ul.task-list li ul li {
-  font-size: 0.9rem;
-  margin-left: 20px;
-}
-
-ul.task-list li.no-homework {
-  font-style: italic;
-  color: #888;
-}
-
-/* 顯示連線狀態 */
-.connection-status {
-  background-color: #f0f0f0;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.connection-status.success {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.connection-status.error {
-  background-color: #f8d7da;
-  color: #721c24;
 }
 
 /* 校舍圖片設置 */
@@ -215,16 +135,4 @@ footer {
   margin-top: 20px;
   position: relative;
   z-index: 2;
-}
-
-/* 響應式設計：手機設備 */
-@media (max-width: 768px) {
-  .container {
-    padding: 10px; /* 手機上減少填充 */
-  }
-
-  .calendar, .right-section {
-    max-width: 100%; /* 手機上寬度全佔 */
-    margin-bottom: 15px; /* 調整日曆與家課紀錄的間距 */
-  }
 }
