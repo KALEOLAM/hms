@@ -67,16 +67,15 @@ function updateTime() {
 async function fetchHomework() {
   try {
     const response = await fetch('/api/homework');  // 假設 API 路徑是 /api/homework
-    if (response.ok) {
-      const homeworkData = await response.json();
-      displayHomework(homeworkData);
-    } else {
-      throw new Error('無法獲取家課資料');
+    if (!response.ok) {
+      throw new Error(`HTTP 錯誤！狀態碼：${response.status}`);
     }
+    const homeworkData = await response.json();
+    displayHomework(homeworkData);
   } catch (error) {
     console.error('獲取家課資料失敗:', error);
     const homeworkList = document.getElementById('homework-list');
-    homeworkList.innerHTML = '<li>無法加載家課資料</li>';
+    homeworkList.innerHTML = `<li>無法加載家課資料: ${error.message}</li>`;  // 顯示錯誤消息
   }
 }
 
