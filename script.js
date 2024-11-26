@@ -13,9 +13,9 @@ document.getElementById("login-form").addEventListener("submit", function (e) {
   if (users[username] && users[username] === password) {
     document.getElementById("login-container").classList.add("hidden");
     document.getElementById("main-container").classList.remove("hidden");
-    initCalendar();
-    updateTime();
-    setInterval(updateTime, 1000);
+    initCalendar();  // 初始化日曆
+    updateTime();    // 更新時間
+    setInterval(updateTime, 1000);  // 每秒更新時間
     fetchHomework();  // 登入後立即從資料庫拉取當天家課
   } else {
     errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
