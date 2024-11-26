@@ -42,8 +42,24 @@ body {
 .input-group input {
   width: 100%;
   padding: 10px;
+  font-family: FangSong, "宋体", serif;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.login-btn {
+  width: 300px;
+  padding: 10px;
+  background-color: #a8d5ba;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #96c9aa;
 }
 
 .error-message {
@@ -58,6 +74,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 header {
@@ -98,4 +116,23 @@ header h1 {
 .calendar .today {
   background-color: #ffe599;
   font-weight: bold;
+}
+
+/* 校舍圖片設置 */
+.background-img {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
 }
