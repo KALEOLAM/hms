@@ -1,25 +1,79 @@
+/* 通用設置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif SC', FangSong, "宋体", serif;
+  background-color: #f7f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 登入頁面 */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e9f0fa;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.login-container h1 {
+  font-size: 2.5rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: #d9534f;
+  margin-top: 10px;
+  font-weight: bold;
+  display: none;
+}
+
 /* 主頁面 */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   width: 100%;
-  overflow-y: auto; /* 允許滾動 */
+  overflow-y: auto;
 }
 
 header {
   text-align: center;
   margin-bottom: 40px;
   position: relative;
-  z-index: 10; /* 確保標題不被時間或其他元素遮擋 */
 }
 
 .header-content {
-  background-color: white; /* 白色背景 */
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: inline-block; /* 顯示為塊元素，並自動調整大小 */
+  display: inline-block;
   text-align: center;
   width: 100%;
   max-width: 600px;
@@ -28,7 +82,7 @@ header {
 header h1 {
   font-size: 2.5rem;
   color: #003366;
-  margin-bottom: 10px; /* 增加標題與時間的間距 */
+  margin-bottom: 10px;
 }
 
 .current-time {
@@ -37,7 +91,46 @@ header h1 {
   margin-top: 10px;
 }
 
-/* 響應式設計，確保手機與電腦顯示一致 */
+.calendar {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.calendar .today {
+  background-color: #ffe599;
+  font-weight: bold;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* 響應式設計 */
 @media (max-width: 768px) {
   .header-content {
     padding: 15px;
