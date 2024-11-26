@@ -7,20 +7,33 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
+  <!-- Login Page -->
+  <div class="login-container" id="login-container">
+    <h1>登入</h1>
+    <p>請輸入用戶名和密碼登入</p>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">用戶名</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="login-btn">登入</button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+  </div>
+
+  <!-- Main Content (Hidden by default) -->
+  <div class="container hidden" id="main-container">
     <header>
       <h1>Maryknoll Homework Management System</h1>
     </header>
-
-    <!-- Main Content -->
     <div class="content">
-      <!-- Left Section -->
       <div class="left-section">
         <div class="class-info">
           <h2>3C 班教師名單</h2>
-          <!-- Placeholder content -->
-          <p>按此查看</p>
         </div>
         <div class="calendar">
           <h3>十一月</h3>
@@ -46,8 +59,6 @@
           </table>
         </div>
       </div>
-
-      <!-- Right Section -->
       <div class="right-section">
         <h2>To do</h2>
         <ul>
@@ -63,13 +74,10 @@
         </ul>
       </div>
     </div>
-
-    <!-- Footer Image -->
     <footer>
       <img src="images/school_building.png" alt="School Building">
     </footer>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
