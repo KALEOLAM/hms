@@ -1,230 +1,70 @@
-/* 通用設置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4C Homework Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-container" id="login-container">
+    <h1>4C 家課管理系統</h1>
+    <p>請輸入用戶名和密碼以登入</p>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">Username 用戶名 :</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password 密碼 :</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="login-btn">登入</button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+  </div>
 
-body {
-  font-family: 'Noto Serif SC', FangSong, "宋体", serif;
-  background-color: #f7f7fa;
-  color: #333;
-  line-height: 1.6;
-  overflow: hidden; /* 防止未登入時滾動 */
-}
+  <!-- Main Content -->
+  <div class="container hidden" id="main-container">
+    <header>
+      <h1>4C Homework Management System</h1>
+      <div class="current-time" id="current-time"></div>
+    </header>
+    <div class="content">
+      <!-- Left Section: Calendar -->
+      <div class="left-section">
+        <div class="class-info">
+          <h2>4C 班</h2>
+        </div>
+        <div class="calendar">
+          <h3 id="current-month">Loading...</h3>
+          <table id="calendar-table"></table>
+        </div>
+      </div>
+      
+      <!-- Right Section: To-do List -->
+      <div class="right-section">
+        <h2>家課記錄</h2>
+        <ul class="task-list" id="homework-list">
+          <!-- 家課記錄將會從資料庫動態載入 -->
+        </ul>
+      </div>
+    </div>
 
-/* 登入頁面 */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #e9f0fa;
-  text-align: center;
-}
+    <!-- Database Connection Status -->
+    <div class="status-container">
+      <p id="db-status" class="db-status">資料庫狀態 : 🩷 連接中...</p>
+    </div>
 
-.hidden {
-  display: none;
-}
+    <footer>
+      <img src="images/school_building.png" alt="校舍圖片" class="background-img">
+      <p>© 2024 4C Homework Management System</p>
+    </footer>
+  </div>
 
-.login-container h1 {
-  font-size: 2.5rem;
-  color: #003366;
-  margin-bottom: 10px;
-}
-
-.input-group {
-  margin-bottom: 15px;
-  max-width: 300px;
-  width: 100%;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  font-family: FangSong, "宋体", serif;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.login-btn {
-  width: 300px;
-  padding: 10px;
-  background-color: #a8d5ba;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.login-btn:hover {
-  background-color: #96c9aa;
-}
-
-.error-message {
-  color: #d9534f;
-  margin-top: 10px;
-  font-weight: bold;
-  display: none;
-}
-
-/* 主頁面 - 隱藏 */
-#main-container {
-  display: none; /* 預設主頁隱藏 */
-}
-
-/* 主頁面 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column; /* 改為垂直排列 */
-  align-items: center;
-  width: 100%;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  color: #003366;
-}
-
-.current-time {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  color: #00509e;
-}
-
-/* 上方日曆 */
-.calendar {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px; /* 增加日曆的最大寬度 */
-  margin-bottom: 20px; /* 日曆與下方家課紀錄間的間距 */
-}
-
-.calendar table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.calendar th, .calendar td {
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-.calendar .today {
-  background-color: #ffe599;
-  font-weight: bold;
-}
-
-/* 下方家課紀錄 */
-.right-section {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px; /* 增加家課紀錄的最大寬度 */
-}
-
-.right-section h2 {
-  font-size: 2rem;
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-ul.task-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul.task-list li {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-ul.task-list li strong {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-ul.task-list li ul {
-  margin-top: 5px;
-}
-
-ul.task-list li ul li {
-  font-size: 0.9rem;
-  margin-left: 20px;
-}
-
-ul.task-list li.no-homework {
-  font-style: italic;
-  color: #888;
-}
-
-/* 顯示連線狀態 */
-.connection-status {
-  background-color: #f0f0f0;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.connection-status.success {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.connection-status.error {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-/* 校舍圖片設置 */
-.background-img {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.2;
-  width: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-/* 響應式設計：手機設備 */
-@media (max-width: 768px) {
-  .container {
-    padding: 10px; /* 手機上減少填充 */
-  }
-
-  .calendar, .right-section {
-    max-width: 100%; /* 手機上寬度全佔 */
-    margin-bottom: 15px; /* 調整日曆與家課紀錄的間距 */
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
