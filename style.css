@@ -10,6 +10,11 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* 登入頁面 */
@@ -18,18 +23,45 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #e9f0fa;
+  height: 100%;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
+/* 背景圖片處理 */
+body {
+  background-image: url('images/school_building.png'); /* 加載背景圖片 */
+  background-size: cover;  /* 使圖片覆蓋整個背景 */
+  background-position: center; /* 使圖片居中顯示 */
+  filter: blur(10px); /* 模糊背景 */
+  position: absolute; /* 使背景固定 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* 遮罩層 */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* 半透明黑色遮罩層 */
+  z-index: -1; /* 放在背景下方 */
+}
+
+/* 隱藏主頁面 */
 .hidden {
   display: none;
 }
 
 .login-container h1 {
   font-size: 2.5rem;
-  color: #003366;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
