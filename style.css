@@ -1,0 +1,101 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #003366;
+  font-size: 2rem;
+}
+
+/* Main Content */
+.content {
+  display: flex;
+  gap: 20px;
+}
+
+.left-section, .right-section {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left-section {
+  text-align: center;
+}
+
+.left-section h2 {
+  margin-bottom: 10px;
+}
+
+.calendar {
+  margin-top: 20px;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.calendar .today {
+  background-color: #ffd700;
+}
+
+/* Right Section */
+.right-section h2 {
+  margin-bottom: 10px;
+}
+
+.right-section ul {
+  list-style: none;
+}
+
+.right-section ul li {
+  margin-bottom: 10px;
+}
+
+.right-section ul ul {
+  margin-top: 5px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
