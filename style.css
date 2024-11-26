@@ -84,7 +84,7 @@ body {
   margin: auto;
 }
 
-/* 隱藏元素的類 */
+/* 隱藏的類 */
 .hidden {
   display: none !important;
 }
@@ -109,7 +109,7 @@ header h1 {
   font-size: 14px;
 }
 
-/* 內容 */
+/* 內容佈局 */
 .content {
   display: flex;
   justify-content: space-between;
@@ -124,18 +124,7 @@ header h1 {
   width: 48%;
 }
 
-/* 班級資訊 */
-.class-info h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
 /* 日曆 */
-.calendar h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
 #calendar-table {
   width: 100%;
   border-collapse: collapse;
@@ -154,11 +143,6 @@ header h1 {
 }
 
 /* 任務列表 */
-.right-section h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
 .task-list {
   list-style: none;
   padding: 0;
