@@ -118,6 +118,72 @@ header h1 {
   font-weight: bold;
 }
 
+/* 右側家課紀錄 */
+.right-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+.right-section h2 {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+ul.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.task-list li {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+ul.task-list li strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+ul.task-list li ul {
+  margin-top: 5px;
+}
+
+ul.task-list li ul li {
+  font-size: 0.9rem;
+  margin-left: 20px;
+}
+
+ul.task-list li.no-homework {
+  font-style: italic;
+  color: #888;
+}
+
+/* 顯示連線狀態 */
+.connection-status {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.connection-status.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.connection-status.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 /* 校舍圖片設置 */
 .background-img {
   position: fixed;
