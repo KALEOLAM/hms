@@ -124,13 +124,15 @@ button:hover {
 
 header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   position: relative;
+  z-index: 10; /* 確保標題不被時間或其他元素遮擋 */
 }
 
 header h1 {
   font-size: 2.5rem;
   color: #003366;
+  margin-bottom: 20px; /* 增加標題與時間的間距 */
 }
 
 .current-time {
