@@ -1,118 +1,3 @@
-/* 通用設置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Noto Serif SC', FangSong, "宋体", serif;
-  background-color: #f7f7fa;
-  color: #333;
-  line-height: 1.6;
-  height: 100%;
-  overflow-y: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding-top: 10px;
-}
-
-/* 背景圖片處理 */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('images/school_building.png');
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  z-index: -1;
-}
-
-/* 遮罩層 */
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-}
-
-/* 登入頁面 */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 10;
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.8); /* 使背景稍微透明 */
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.hidden {
-  display: none;
-}
-
-.login-container h1 {
-  font-size: 2.5rem;
-  color: #003366;
-  margin-bottom: 10px;
-}
-
-.input-group {
-  margin-bottom: 15px;
-  max-width: 300px;
-  width: 100%;
-}
-
-.input-group label {
-  display: block;
-  font-size: 1.1rem;
-  color: #003366;
-  margin-bottom: 5px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4d8af0; /* 淺藍色 */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-button:hover {
-  background-color: #3b7ad8;
-}
-
-.error-message {
-  color: #d9534f;
-  margin-top: 10px;
-  font-weight: bold;
-  display: none;
-}
-
 /* 主頁面 */
 .container {
   max-width: 1200px;
@@ -129,142 +14,56 @@ header {
   z-index: 10; /* 確保標題不被時間或其他元素遮擋 */
 }
 
+.header-content {
+  background-color: white; /* 白色背景 */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* 顯示為塊元素，並自動調整大小 */
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
 header h1 {
   font-size: 2.5rem;
   color: #003366;
-  margin-bottom: 20px; /* 增加標題與時間的間距 */
+  margin-bottom: 10px; /* 增加標題與時間的間距 */
 }
 
 .current-time {
   font-size: 1.2rem;
-  margin-top: 10px;
   color: #00509e;
-  position: absolute;
-  bottom: 10px;
-  right: 20px; /* 調整至右下角 */
-  z-index: 1;
-}
-
-header h1, .current-time {
-  z-index: 1; /* 確保時間顯示在前 */
-}
-
-/* 左側日曆 */
-.calendar {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px; /* 分開日曆與其他內容 */
-}
-
-.calendar h3 {
-  font-size: 1.6rem;
-  color: #003366;
-  margin-bottom: 10px;
-}
-
-.calendar table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.calendar th, .calendar td {
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-.calendar .today {
-  background-color: #c1e4fe;
-  font-weight: bold;
-  color: #003366;
-}
-
-/* 家課記錄 */
-.right-section {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.right-section h2 {
-  font-size: 1.8rem;
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-.task-list {
-  list-style: none;
-}
-
-.task-list li {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.task-list strong {
-  color: #003366;
-}
-
-/* "3C 班教師名單" 標題位置調整 */
-.class-info h2 {
-  font-size: 1.8rem;
-  color: #003366;
-  text-align: center; /* 居中 */
-  margin-bottom: 20px;
-}
-
-/* 設定網頁滾動 */
-html, body {
-  height: 100%;
-  overflow-y: auto;
+  margin-top: 10px;
 }
 
 /* 響應式設計，確保手機與電腦顯示一致 */
 @media (max-width: 768px) {
+  .header-content {
+    padding: 15px;
+    max-width: 500px;
+  }
+
   header h1 {
     font-size: 2rem;
   }
 
   .current-time {
     font-size: 1rem;
-    bottom: 5px;
-    right: 10px;
-  }
-
-  .calendar h3 {
-    font-size: 1.2rem;
-  }
-
-  .right-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .task-list li {
-    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .login-container {
-    padding: 20px;
+  .header-content {
+    padding: 10px;
+    max-width: 100%;
   }
 
   header h1 {
     font-size: 1.8rem;
   }
 
-  .calendar h3 {
-    font-size: 1.2rem;
-  }
-
-  .right-section h2 {
-    font-size: 1.4rem;
-  }
-
-  .task-list li {
+  .current-time {
     font-size: 0.9rem;
   }
 }
