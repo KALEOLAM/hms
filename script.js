@@ -4,19 +4,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginContainer = document.getElementById("login-container");
   const mainContainer = document.getElementById("main-container");
 
+  // 模擬的用戶名和密碼
   const VALID_USERNAME = "user";
   const VALID_PASSWORD = "password";
 
+  // 登入事件
   loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+    event.preventDefault(); // 阻止表單默認提交行為
 
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+      // 顯示主介面
       loginContainer.classList.add("hidden");
       mainContainer.classList.remove("hidden");
 
+      // 更新時間和生成日曆
       updateTime();
       generateCalendar();
     } else {
@@ -24,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // 更新時間的函式
   function updateTime() {
     const currentTimeElement = document.getElementById("current-time");
     setInterval(() => {
@@ -41,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
+  // 生成日曆的函式
   function generateCalendar() {
     const calendarTable = document.getElementById("calendar-table");
     const currentMonthElement = document.getElementById("current-month");
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     currentMonthElement.textContent = `${year} 年 ${month + 1} 月`;
 
-    calendarTable.innerHTML = "";
+    calendarTable.innerHTML = ""; // 清空表格
 
     let dayCounter = 1;
     for (let i = 0; i < 6; i++) {
@@ -66,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           cell.textContent = dayCounter;
           if (dayCounter === now.getDate()) {
-            cell.style.backgroundColor = "#FFD700";
+            cell.style.backgroundColor = "#FFD700"; // 高亮今天
           }
           dayCounter++;
         }
