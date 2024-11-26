@@ -10,36 +10,27 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   overflow: hidden;
-}
-
-/* 登入頁面 */
-.login-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 10;
+  position: relative; /* 使背景圖片的偽元素定位相對 */
 }
 
 /* 背景圖片處理 */
-body {
-  background-image: url('images/school_building.png'); /* 加載背景圖片 */
-  background-size: cover;  /* 使圖片覆蓋整個背景 */
-  background-position: center; /* 使圖片居中顯示 */
-  filter: blur(10px); /* 模糊背景 */
-  position: absolute; /* 使背景固定 */
+body::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-image: url('images/school_building.png'); /* 加載背景圖片 */
+  background-size: cover;  /* 使圖片覆蓋整個背景 */
+  background-position: center; /* 使圖片居中顯示 */
+  filter: blur(10px); /* 模糊背景 */
+  z-index: -1; /* 確保背景圖片在內容之後 */
 }
 
 /* 遮罩層 */
@@ -54,7 +45,17 @@ body::after {
   z-index: -1; /* 放在背景下方 */
 }
 
-/* 隱藏主頁面 */
+/* 登入頁面 */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  position: relative; /* 確保內容層在背景之上 */
+}
+
 .hidden {
   display: none;
 }
