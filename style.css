@@ -70,6 +70,11 @@ body {
   display: none;
 }
 
+/* 主頁面 - 隱藏 */
+#main-container {
+  display: none; /* 預設主頁隱藏 */
+}
+
 /* 主頁面 */
 .container {
   max-width: 1200px;
