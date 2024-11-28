@@ -21,13 +21,15 @@ body {
 
 /* 月曆區域 */
 .calendar {
-  width: 35%; /* 月曆寬度縮小 */
+  width: 50%; /* 月曆寬度適中 */
   margin: 20px auto; /* 置中顯示 */
   background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  /* 增加顏色區分 */
+  font-size: 1.2rem; /* 增加字體大小 */
 }
 
 /* 月曆表格 */
@@ -37,10 +39,10 @@ body {
 }
 
 .calendar th, .calendar td {
-  padding: 12px; /* 調整格子的內距 */
+  padding: 16px; /* 調整格子的內距 */
   border: 1px solid #ddd;
   text-align: center;
-  font-size: 1.2rem; /* 減小字體大小 */
+  font-size: 1.4rem; /* 增大字體大小 */
   cursor: pointer;
 }
 
@@ -68,7 +70,7 @@ body {
 /* 響應式設計：小屏幕時 */
 @media (max-width: 768px) {
   .calendar {
-    width: 90%;
+    width: 80%;
     margin: 10px auto;
   }
 }
