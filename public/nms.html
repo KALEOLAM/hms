@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>功課上載 - Maryknoll Homework Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>功課上載</h1>
+    <form id="homework-form">
+      <div class="input-group">
+        <label for="subject">科目</label>
+        <select id="subject" name="subject" required>
+          <option value="中文">中文</option>
+          <option value="英文">英文</option>
+          <option value="數學">數學</option>
+          <option value="公社">公社</option>
+          <option value="視藝">視藝</option>
+          <option value="視藝(選修)">視藝(選修)</option>
+          <option value="宗教">宗教</option>
+          <option value="宗教(選修)">宗教(選修)</option>
+          <option value="體育">體育</option>
+          <option value="體育(選修)">體育(選修)</option>
+          <option value="生物">生物</option>
+          <option value="化學">化學</option>
+          <option value="物理">物理</option>
+        </select>
+      </div>
+
+      <div class="input-group" id="group-container" style="display: none;">
+        <label for="group">組別</label>
+        <select id="group" name="group">
+          <option value="4C3">4C3</option>
+          <option value="4C5">4C5</option>
+          <option value="4E1">4E1</option>
+          <option value="4E2">4E2</option>
+          <option value="4E3">4E3</option>
+          <option value="4E4">4E4</option>
+          <option value="4E5">4E5</option>
+          <option value="4M1">4M1</option>
+          <option value="4M2">4M2</option>
+          <option value="4M3">4M3</option>
+          <option value="4M4">4M4</option>
+          <option value="4M5">4M5</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="homework">功課</label>
+        <textarea id="homework" name="homework" required></textarea>
+      </div>
+
+      <div class="input-group" id="note-container">
+        <label for="note">備注 (可選)</label>
+        <textarea id="note" name="note"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">提交</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
