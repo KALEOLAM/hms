@@ -4,8 +4,11 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
-  /* 背景圖片已移除 */
-  background-size: cover;
+  /* 設定背景圖片 */
+  background-image: url('images/school_building.png');  /* 確保圖片路徑正確 */
+  background-repeat: no-repeat;
+  background-size: cover;  /* 讓背景圖片覆蓋整個背景 */
+  background-position: center center;  /* 居中顯示背景圖片 */
 }
 
 /* 避免文字被背景遮擋的調整 */
@@ -45,7 +48,7 @@ body {
 /* 登入按鈕設置 */
 .login-btn {
   width: 100%;  /* 設置為與輸入框寬度一致 */
-  padding: 12px;
+  padding: 15px;
   background-color: #a8d5ba; /* 淺綠色 */
   color: #fff;
   border: none;
