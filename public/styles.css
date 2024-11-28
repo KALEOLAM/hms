@@ -9,22 +9,15 @@ body {
   background-repeat: no-repeat;
   background-size: cover;  /* 讓背景圖片覆蓋整個背景 */
   background-position: center center;  /* 居中顯示背景圖片 */
-}
-
-/* 避免文字被背景遮擋的調整 */
-.container, .login-container {
-  background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center; /* 使所有文字都置中 */
 }
 
 /* 月曆區域 */
 .calendar {
-  width: 55%; /* 月曆寬度 */
+  width: 35%; /* 月曆寬度縮小 */
   margin: 20px auto; /* 置中顯示 */
   background-color: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -37,10 +30,10 @@ body {
 }
 
 .calendar th, .calendar td {
-  padding: 25px;
+  padding: 12px; /* 調整格子的內距 */
   border: 1px solid #ddd;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.2rem; /* 減小字體大小 */
   cursor: pointer;
 }
 
@@ -71,4 +64,15 @@ body {
     width: 90%;
     margin: 10px auto;
   }
+}
+
+/* 設定 dashboard 頁面的字體顏色與對齊 */
+h1, h2, h3, p {
+  color: #003366; /* 深藍色 */
+  text-align: center; /* 使文字置中 */
+}
+
+ul.task-list li {
+  color: #333; /* 黑色 */
+  margin-bottom: 10px;
 }
