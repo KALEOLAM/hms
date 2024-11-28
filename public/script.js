@@ -1,7 +1,7 @@
 // 檢查用戶是否已經登入
 if (!sessionStorage.getItem("loggedIn")) {
   // 未登入，顯示 "No Access" 並重定向到 index.html
-  document.body.innerHTML = "<h1>No Access</h1>";
+  document.body.innerHTML = "<h1>你沒有權限 No Access</h1>";
   setTimeout(() => {
     window.location.href = "index.html";  // 3秒後跳回登入頁面
   }, 3000);
@@ -112,12 +112,12 @@ function loadHomeworkData(selectedDate) {
 
       homeworkList.innerHTML = todayHomework.length
         ? todayHomework
-            .map((homework) => `<li><strong>${homework.subject}</strong>: ${homework.description}</li>`)
+            .map((homework) => `<div><strong>${homework.subject}</strong>: ${homework.description}</div>`)
             .join("")
-        : "<li>今天沒有家課記錄。</li>";
+        : "<div>當天沒有家課記錄。</div>";
     })
     .catch((error) => {
-      document.getElementById("homework-list").innerHTML = `<li>無法加載家課數據。(${error.message})</li>`;
+      document.getElementById("homework-list").innerHTML = `<div>無法加載家課數據。(${error.message})</div>`;
     });
 }
 
