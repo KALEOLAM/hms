@@ -4,7 +4,7 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
-  background: url('images/school_building.png') no-repeat center center fixed; /* 背景圖片 */
+  /* 背景圖片已移除 */
   background-size: cover;
 }
 
@@ -44,7 +44,7 @@ body {
 
 /* 登入按鈕設置 */
 .login-btn {
-  width: 100%;
+  width: 100%;  /* 設置為與輸入框寬度一致 */
   padding: 12px;
   background-color: #a8d5ba; /* 淺綠色 */
   color: #fff;
