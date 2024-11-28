@@ -121,6 +121,40 @@ function loadHomeworkData(selectedDate) {
     });
 }
 
+// 提交表單並將數據儲存到 JSON 文件
+document.getElementById("homework-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const subject = document.getElementById("subject").value;
+  const group = document.getElementById("group").value;
+  const homework = document.getElementById("homework").value;
+  const note = document.getElementById("note").value || "";  // 備注為空時設為空字符串
+
+  if (!homework) {
+    alert("功課內容不可空缺！");
+    return;
+  }
+
+  const date = new Date().toISOString().split('T')[0]; // 獲取當前日期 (YYYY-MM-DD)
+  
+  // 取得已儲存的資料，若無則初始化為空物件
+  const data = JSON.parse(localStorage.getItem("homeworkData")) || {};
+
+  // 將資料儲存到當天的日期
+  if (!data[date]) {
+    data[date] = [];
+  }
+  data[date].push({ subject, group, homework, note });
+
+  // 將更新後的資料儲存回 localStorage
+  localStorage.setItem("homeworkData", JSON.stringify(data));
+
+  alert("家課內容已成功提交！");
+
+  // 重新加載頁面或進行其他操作
+  window.location.reload();
+});
+
 // 初始化登入後的主頁面
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("current-time")) {
