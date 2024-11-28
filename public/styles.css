@@ -19,86 +19,56 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 登入頁面設置 */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}
-
-/* 輸入框設置 */
-.input-group {
-  margin-bottom: 15px;
-  max-width: 400px; /* 調整輸入框的最大寬度 */
-  width: 100%;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 12px;
-  font-family: FangSong, "宋体", serif; /* 統一字體 */
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* 登入按鈕設置 */
-.login-btn {
-  width: 100%;  /* 設置為與輸入框寬度一致 */
-  padding: 15px;
-  background-color: #a8d5ba; /* 淺綠色 */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.login-btn:hover {
-  background-color: #96c9aa;
-}
-
-/* 錯誤消息 */
-.error-message {
-  color: #d9534f;
-  font-weight: bold;
-  margin-top: 10px;
-  display: none;
-}
-
-/* 主內容樣式 */
-.container {
-  max-width: 900px;
-  margin: 50px auto;
+/* 月曆區域 */
+.calendar {
+  width: 70%; /* 月曆寬度 */
+  margin: 20px auto; /* 置中顯示 */
+  background-color: #fff;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-h1, h2 {
-  color: #00509e; /* 淺藍色 */
+/* 月曆表格 */
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-h3, p, .current-time {
-  color: #6a5acd; /* 淺紫色 */
+.calendar th, .calendar td {
+  padding: 25px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
-ul.task-list li {
-  color: #333; /* 黑色 */
-  margin-bottom: 10px;
+.calendar th {
+  background-color: #f0f0f0;
 }
 
-/* 響應式設計 */
+/* 高亮今天的日期 */
+.calendar .today {
+  background-color: #ffe599; /* 淺黃色 */
+  font-weight: bold;
+}
+
+/* 高亮用戶選擇的日期 */
+.calendar .selected {
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: white;
+}
+
+/* 滑鼠懸停時變更格子的顏色 */
+.calendar td:hover {
+  background-color: #f0f0f0;
+}
+
+/* 響應式設計：小屏幕時 */
 @media (max-width: 768px) {
-  .container, .login-container {
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .input-group {
-    max-width: 100%;
+  .calendar {
+    width: 90%;
+    margin: 10px auto;
   }
 }
