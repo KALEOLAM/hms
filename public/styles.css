@@ -21,7 +21,7 @@ body {
 
 /* 月曆區域 */
 .calendar {
-  width: 70%; /* 月曆寬度 */
+  width: 55%; /* 月曆寬度 */
   margin: 20px auto; /* 置中顯示 */
   background-color: #fff;
   padding: 20px;
