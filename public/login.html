@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- 登入頁面 -->
   <div class="login-container">
     <h1>Maryknoll 家課管理系統</h1>
     <p>請輸入用戶名和密碼進行登錄</p>
@@ -23,15 +24,18 @@
       <p id="error-message" class="error-message"></p>
     </form>
   </div>
+
   <script>
     document.getElementById("login-form").addEventListener("submit", function (e) {
       e.preventDefault();
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-      // 模擬登入驗證
-      if (username === "user" && password === "password") {
-        // 登入成功，重定向至登入後頁面
+      // 模擬用戶數據
+      const users = { user: "password" };
+
+      if (users[username] && users[username] === password) {
+        // 登入成功，跳轉至主頁
         window.location.href = "dashboard.html";
       } else {
         const errorMessage = document.getElementById("error-message");
