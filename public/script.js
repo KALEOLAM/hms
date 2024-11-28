@@ -30,6 +30,19 @@ document.getElementById("login-form")?.addEventListener("submit", function (e) {
   }
 });
 
+// 當科目選擇為中文/英文/數學時，顯示組別選項
+document.getElementById("subject").addEventListener("change", function() {
+  const subject = this.value;
+  const groupContainer = document.getElementById("group-container");
+
+  // 只在選擇中文、英文、數學時顯示組別選擇框
+  if (["中文", "英文", "數學"].includes(subject)) {
+    groupContainer.style.display = "block";
+  } else {
+    groupContainer.style.display = "none";
+  }
+});
+
 // 更新香港時間
 function updateTime() {
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" }));
