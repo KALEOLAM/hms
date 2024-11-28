@@ -42,7 +42,16 @@ function initCalendar() {
 // 更新時間
 function updateTime() {
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Hong_Kong" }));
-  const timeString = now.toLocaleTimeString("zh-Hant", { hour12: false });
+  
+  // 格式化為 "YYYY年MM月DD日 HH:mm:ss"
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // 月份從 0 開始，所以加 1
+  const day = now.getDate();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+
+  const timeString = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
   document.getElementById("current-time").textContent = timeString;
 }
 
@@ -75,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 僅在 dashboard.html 中執行
     initCalendar();
     updateTime();
-    setInterval(updateTime, 1000);
+    setInterval(updateTime, 1000); // 每秒更新一次時間
     loadHomeworkData();
   }
 });
