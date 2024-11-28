@@ -4,35 +4,98 @@ body {
   background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
+  background: url('images/school_building.png') no-repeat center center fixed; /* 背景圖片 */
+  background-size: cover;
 }
 
-/* 登入頁面 */
+/* 避免文字被背景遮擋的調整 */
+.container, .login-container {
+  background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 登入頁面設置 */
 .login-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #e9f0fa;
   text-align: center;
 }
 
-/* 主內容 */
+/* 輸入框設置 */
+.input-group {
+  margin-bottom: 15px;
+  max-width: 400px; /* 調整輸入框的最大寬度 */
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  font-family: FangSong, "宋体", serif; /* 統一字體 */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 登入按鈕設置 */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background-color: #96c9aa;
+}
+
+/* 錯誤消息 */
+.error-message {
+  color: #d9534f;
+  font-weight: bold;
+  margin-top: 10px;
+  display: none;
+}
+
+/* 主內容樣式 */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 50px auto;
   padding: 20px;
-}
-
-.calendar, .homework-section {
-  background-color: #fff;
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-footer {
   text-align: center;
-  margin-top: 20px;
+}
+
+h1, h2 {
+  color: #00509e; /* 淺藍色 */
+}
+
+h3, p, .current-time {
+  color: #6a5acd; /* 淺紫色 */
+}
+
+ul.task-list li {
+  color: #333; /* 黑色 */
+  margin-bottom: 10px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .container, .login-container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .input-group {
+    max-width: 100%;
+  }
 }
