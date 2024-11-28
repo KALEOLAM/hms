@@ -1,7 +1,6 @@
 /* 通用設置 */
 body {
   font-family: 'Noto Serif SC', FangSong, "宋体", serif;
-  background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
   /* 設定背景圖片 */
@@ -10,6 +9,14 @@ body {
   background-size: cover;  /* 讓背景圖片覆蓋整個背景 */
   background-position: center center;  /* 居中顯示背景圖片 */
   text-align: center; /* 使所有文字都置中 */
+}
+
+/* 避免文字被背景遮擋的調整 (半透明背景) */
+.container, .login-container {
+  background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* 月曆區域 */
