@@ -36,7 +36,7 @@ function updateTime() {
 
   // 格式化為 "YYYY年MM月DD日 HH:mm:ss"
   const year = now.getFullYear();
-  const month = now.getMonth() + 1;
+  const month = now.getMonth() + 1; // 月份從 0 開始，所以加 1
   const day = now.getDate();
   const hours = now.getHours().toString().padStart(2, '0');
   const minutes = now.getMinutes().toString().padStart(2, '0');
@@ -56,18 +56,51 @@ function initCalendar() {
   const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
   let tableContent = "<tr>";
 
+  // 添加星期一至日的標題
+  const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+  tableContent += weekdays.map(day => `<th>${day}</th>`).join('');
+  tableContent += "</tr><tr>";
+
   for (let i = 1; i <= daysInMonth; i++) {
-    tableContent += `<td>${i}</td>`;
-    if (i % 7 === 0) {
+    const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${i}`;
+    tableContent += `<td class="calendar-day" data-date="${dateString}">${i}</td>`;
+    if ((i + new Date(today.getFullYear(), today.getMonth(), 1).getDay()) % 7 === 0) {
       tableContent += "</tr><tr>";
     }
   }
   tableContent += "</tr>";
   calendarTable.innerHTML = tableContent;
+
+  // 高亮今天的日期
+  const todayDate = today.getDate();
+  const todayElement = document.querySelector(`[data-date='${today.getFullYear()}-${today.getMonth() + 1}-${todayDate}']`);
+  if (todayElement) todayElement.classList.add('today');
+
+  // 為每個日期設置選擇事件
+  document.querySelectorAll('.calendar-day').forEach(cell => {
+    cell.addEventListener('click', function () {
+      const selectedDate = this.getAttribute('data-date');
+      sessionStorage.setItem('selectedDate', selectedDate); // 存儲用戶選擇的日期
+      loadHomeworkData(selectedDate); // 加載家課資料
+      updateSelectedDate(selectedDate); // 高亮顯示選中的日期
+    });
+  });
+}
+
+// 高亮顯示選中的日期
+function updateSelectedDate(selectedDate) {
+  const allCells = document.querySelectorAll('.calendar-day');
+  allCells.forEach(cell => {
+    cell.classList.remove('selected');
+  });
+  const selectedCell = document.querySelector(`[data-date='${selectedDate}']`);
+  if (selectedCell) {
+    selectedCell.classList.add('selected');
+  }
 }
 
 // 加載家課數據
-function loadHomeworkData() {
+function loadHomeworkData(selectedDate) {
   fetch("homework_data.json")
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -75,8 +108,7 @@ function loadHomeworkData() {
     })
     .then((data) => {
       const homeworkList = document.getElementById("homework-list");
-      const today = new Date().toISOString().split("T")[0];
-      const todayHomework = data[today] || [];
+      const todayHomework = data[selectedDate] || [];
 
       homeworkList.innerHTML = todayHomework.length
         ? todayHomework
@@ -96,6 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
     initCalendar();
     updateTime();
     setInterval(updateTime, 1000); // 每秒更新一次時間
-    loadHomeworkData();
+
+    // 加載選擇的日期家課記錄
+    const selectedDate = sessionStorage.getItem('selectedDate');
+    if (selectedDate) {
+      loadHomeworkData(selectedDate);
+      updateSelectedDate(selectedDate);
+    }
   }
 });
