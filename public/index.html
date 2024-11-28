@@ -3,10 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0;url=login.html">
+  <title>登入 - Maryknoll Homework Management System</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <p>Redirecting to <a href="login.html">login page</a>...</p>
+  <!-- 登入頁面 -->
+  <div class="login-container">
+    <h1>Maryknoll 家課管理系統</h1>
+    <p>請輸入用戶名和密碼進行登錄</p>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">用戶名</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="login-btn">登入</button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // 模擬用戶數據
+      const users = { user: "password" };
+
+      if (users[username] && users[username] === password) {
+        // 登入成功，跳轉至主頁
+        window.location.href = "dashboard.html";
+      } else {
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
+        errorMessage.style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>
