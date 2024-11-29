@@ -12,11 +12,15 @@ body {
 }
 
 /* 避免文字被背景遮擋的調整 (半透明背景) */
-.login-container {
+.container, .login-container {
   background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 登入頁面設置 */
+.login-container {
   width: 400px;
   margin: 100px auto;
 }
@@ -77,4 +81,70 @@ p {
   font-weight: bold;
   margin-top: 10px;
   display: none;
+}
+
+/* 月曆區域 */
+.calendar {
+  width: 50%; /* 月曆寬度適中 */
+  margin: 20px auto; /* 置中顯示 */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.2rem; /* 增加字體大小 */
+}
+
+/* 月曆表格 */
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+  padding: 16px; /* 調整格子的內距 */
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.4rem; /* 增大字體大小 */
+  cursor: pointer;
+}
+
+.calendar th {
+  background-color: #f0f0f0;
+}
+
+/* 高亮今天的日期 */
+.calendar .today {
+  background-color: #ffe599; /* 淺黃色 */
+  font-weight: bold;
+}
+
+/* 高亮用戶選擇的日期 */
+.calendar .selected {
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: white;
+}
+
+/* 滑鼠懸停時變更格子的顏色 */
+.calendar td:hover {
+  background-color: #f0f0f0;
+}
+
+/* 響應式設計：小屏幕時 */
+@media (max-width: 768px) {
+  .calendar {
+    width: 80%;
+    margin: 10px auto;
+  }
+}
+
+/* 設定 dashboard 頁面的字體顏色與對齊 */
+h1, h2, h3, p {
+  color: #003366; /* 深藍色 */
+  text-align: center; /* 使文字置中 */
+}
+
+ul.task-list li {
+  color: #333; /* 黑色 */
+  margin-bottom: 10px;
 }
