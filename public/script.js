@@ -17,13 +17,21 @@ const users = {
 
 // 設定自動登出的計時器
 let logoutTimer;
+let logoutTimeRemaining = 600; // 600秒 (10分鐘)
+
 function resetLogoutTimer() {
   clearTimeout(logoutTimer);
-  logoutTimer = setTimeout(() => {
-    alert("由於長時間未操作，您已被登出。");
-    sessionStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
-  }, 600000); // 600秒（10分鐘）
+  logoutTimeRemaining = 600; // 重新設定為 600秒
+  logoutTimer = setInterval(() => {
+    if (logoutTimeRemaining > 0) {
+      logoutTimeRemaining--;
+      updateTime(); // 更新倒計時
+    } else {
+      alert("由於長時間未操作，您已被登出。");
+      sessionStorage.removeItem("loggedIn");
+      window.location.href = "index.html";
+    }
+  }, 1000); // 每秒更新倒計時
 }
 
 // 監聽使用者互動事件以重置登出計時器
@@ -45,8 +53,7 @@ function updateTime() {
   document.getElementById("current-time").textContent = timeString;
 
   // 更新倒計時
-  const remainingSeconds = Math.ceil((logoutTimer._idleTimeout - Date.now() + logoutTimer._idleStart) / 1000);
-  document.getElementById("logout-timer").textContent = `${remainingSeconds}秒後自動登出`;
+  document.getElementById("logout-timer").textContent = `${logoutTimeRemaining}秒後自動登出`;
 }
 
 // 處理登出邏輯
