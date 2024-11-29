@@ -199,21 +199,28 @@ document.getElementById("homework-form").addEventListener("submit", function(e) 
     return;
   }
 
-  // 使用 Fetch API 發送請求到伺服器
+  // 建立要送出的資料物件
+  const data = {
+    subject,
+    group,
+    homework,
+    note
+  };
+
+  // 發送資料到伺服器
   fetch("http://hk-p-1.node.flybirdhost.net:20005/submit-homework", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ subject, group, homework, note })  // 傳送表單資料
+    body: JSON.stringify(data)
   })
   .then(response => response.json())
   .then(data => {
-    alert(data.message);  // 顯示伺服器返回的訊息
-    document.getElementById("homework-form").reset();  // 清空表單
+    alert(data.message); // 顯示成功訊息
+    document.getElementById("homework-form").reset(); // 清空表單
   })
   .catch(error => {
-    alert("發生錯誤，請稍後再試！");
-    console.error("錯誤:", error);
+    alert("無法提交功課！請稍後再試。");
   });
 });
