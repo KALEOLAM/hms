@@ -20,7 +20,7 @@ body {
 
 /* 登入頁面設置 */
 .login-container {
-  width: 400px;
+  width: 360px; /* 將寬度縮小10% */
   margin: 100px auto;
 }
 
@@ -49,7 +49,7 @@ p {
 }
 
 .input-group input {
-  width: 100%;
+  width: 90%;  /* 縮小10% */
   padding: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -59,7 +59,7 @@ p {
 
 /* 登入按鈕設置 */
 .login-btn {
-  width: 100%;
+  width: 90%;  /* 縮小10% */
   padding: 15px;
   background-color: #a8d5ba; /* 淺綠色 */
   color: #fff;
@@ -82,64 +82,9 @@ p {
   display: none;
 }
 
-/* 月曆區域 */
-.calendar {
-  width: 50%; /* 月曆寬度適中 */
-  margin: 20px auto; /* 置中顯示 */
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-size: 1.2rem; /* 增加字體大小 */
-}
-
-/* 月曆表格 */
-.calendar table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.calendar th, .calendar td {
-  padding: 16px; /* 調整格子的內距 */
-  border: 1px solid #ddd;
-  text-align: center;
-  font-size: 1.4rem; /* 增大字體大小 */
-  cursor: pointer;
-}
-
-.calendar th {
-  background-color: #f0f0f0;
-}
-
-/* 高亮今天的日期 */
-.calendar .today {
-  background-color: #ffe599; /* 淺黃色 */
-  font-weight: bold;
-}
-
-/* 高亮用戶選擇的日期 */
-.calendar .selected {
-  background-color: #a8d5ba; /* 淺綠色 */
-  color: white;
-}
-
-/* 滑鼠懸停時變更格子的顏色 */
-.calendar td:hover {
-  background-color: #f0f0f0;
-}
-
-/* 響應式設計：小屏幕時 */
-@media (max-width: 768px) {
-  .calendar {
-    width: 80%;
-    margin: 10px auto;
-  }
-}
-
 /* 科目與組別下拉式選單 */
 .input-group select {
-  width: 100%; /* 設置選單的寬度為100% */
+  width: 90%; /* 設置選單的寬度為90% */
   padding: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -149,7 +94,7 @@ p {
 
 /* 功能選項 */
 .submit-btn {
-  width: 100%;
+  width: 90%;  /* 縮小10% */
   padding: 15px;
   background-color: #a8d5ba; /* 淺綠色 */
   color: #fff;
