@@ -12,76 +12,69 @@ body {
 }
 
 /* 避免文字被背景遮擋的調整 (半透明背景) */
-.container, .login-container {
+.login-container {
   background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 100px auto;
 }
 
-/* 月曆區域 */
-.calendar {
-  width: 50%; /* 月曆寬度適中 */
-  margin: 20px auto; /* 置中顯示 */
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  /* 增加顏色區分 */
-  font-size: 1.2rem; /* 增加字體大小 */
+h1 {
+  font-family: FangSong, "宋体", serif;
+  color: #00509e;
+  margin-bottom: 20px;
 }
 
-/* 月曆表格 */
-.calendar table {
+p {
+  font-family: FangSong, "宋体", serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-family: FangSong, "宋体", serif;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.input-group input {
   width: 100%;
-  border-collapse: collapse;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: FangSong, "宋体", serif; /* 統一字體 */
+  font-size: 1rem;
 }
 
-.calendar th, .calendar td {
-  padding: 16px; /* 調整格子的內距 */
-  border: 1px solid #ddd;
-  text-align: center;
-  font-size: 1.4rem; /* 增大字體大小 */
+/* 登入按鈕設置 */
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: FangSong, "宋体", serif;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
-.calendar th {
-  background-color: #f0f0f0;
+.login-btn:hover {
+  background-color: #96c9aa;
 }
 
-/* 高亮今天的日期 */
-.calendar .today {
-  background-color: #ffe599; /* 淺黃色 */
+/* 錯誤消息 */
+.error-message {
+  color: #d9534f;
   font-weight: bold;
-}
-
-/* 高亮用戶選擇的日期 */
-.calendar .selected {
-  background-color: #a8d5ba; /* 淺綠色 */
-  color: white;
-}
-
-/* 滑鼠懸停時變更格子的顏色 */
-.calendar td:hover {
-  background-color: #f0f0f0;
-}
-
-/* 響應式設計：小屏幕時 */
-@media (max-width: 768px) {
-  .calendar {
-    width: 80%;
-    margin: 10px auto;
-  }
-}
-
-/* 設定 dashboard 頁面的字體顏色與對齊 */
-h1, h2, h3, p {
-  color: #003366; /* 深藍色 */
-  text-align: center; /* 使文字置中 */
-}
-
-ul.task-list li {
-  color: #333; /* 黑色 */
-  margin-bottom: 10px;
+  margin-top: 10px;
+  display: none;
 }
