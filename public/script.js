@@ -35,7 +35,7 @@ function resetLogoutTimer() {
 }
 
 // 監聽使用者互動事件以重置登出計時器
-["click", "mousemove", "keydown"].forEach((event) => {
+["click", "keydown"].forEach((event) => {
   window.addEventListener(event, resetLogoutTimer);
 });
 resetLogoutTimer(); // 初始計時
@@ -53,7 +53,7 @@ function updateTime() {
   document.getElementById("current-time").textContent = timeString;
 
   // 更新倒計時
-  document.getElementById("logout-timer").textContent = `${logoutTimeRemaining}秒後自動登出`;
+  document.getElementById("logout-timer").textContent = `${logoutTimeRemaining}`;
 }
 
 // 處理登出邏輯
