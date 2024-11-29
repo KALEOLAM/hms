@@ -184,14 +184,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-document.getElementById("homework-form").addEventListener("submit", function(e) {
+document.getElementById("homework-form").addEventListener("submit", async function(e) {
   e.preventDefault(); // 防止表單提交刷新頁面
 
-  // 取得表單欄位的數據
   const subject = document.getElementById("subject").value;
-  const group = document.getElementById("group").value || "不適用"; // 預設為 "不適用" 以防沒有選擇
+  const group = document.getElementById("group").value || "不適用"; 
   const homework = document.getElementById("homework").value;
-  const note = document.getElementById("note").value || ""; // 如果沒有備註就留空
+  const note = document.getElementById("note").value || "";
 
   // 確保功課內容不為空
   if (!homework) {
@@ -199,7 +198,6 @@ document.getElementById("homework-form").addEventListener("submit", function(e) 
     return;
   }
 
-  // 取得當前日期（格式：YYYY-MM-DD）
   const date = new Date().toISOString().split('T')[0];
 
   // 從 localStorage 取得已儲存的數據，如果沒有則設為空物件
@@ -213,12 +211,12 @@ document.getElementById("homework-form").addEventListener("submit", function(e) 
   // 儲存新提交的功課
   homeworkData[date].push({ subject, group, description: homework, note });
 
-  // 把更新後的資料存回 localStorage
+  // 非同步儲存資料
   localStorage.setItem("homeworkData", JSON.stringify(homeworkData));
 
   // 顯示成功訊息
   alert("功課內容已成功提交！");
-
+  
   // 清空表單
   document.getElementById("homework-form").reset();
 });
