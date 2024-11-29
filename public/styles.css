@@ -3,11 +3,10 @@ body {
   font-family: 'Noto Serif SC', FangSong, "宋体", serif;
   color: #333;
   line-height: 1.6;
-  /* 設定背景圖片 */
-  background-image: url('images/school_building.png');  /* 確保圖片路徑正確 */
+  background-image: url('images/school_building.png'); /* 確保圖片路徑正確 */
   background-repeat: no-repeat;
-  background-size: cover;  /* 讓背景圖片覆蓋整個背景 */
-  background-position: center center;  /* 居中顯示背景圖片 */
+  background-size: cover;
+  background-position: center center;
   text-align: center; /* 使所有文字都置中 */
 }
 
@@ -138,13 +137,42 @@ p {
   }
 }
 
-/* 設定 dashboard 頁面的字體顏色與對齊 */
-h1, h2, h3, p {
-  color: #003366; /* 深藍色 */
-  text-align: center; /* 使文字置中 */
+/* 科目與組別下拉式選單 */
+.input-group select {
+  width: 100%; /* 設置選單的寬度為100% */
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: FangSong, "宋体", serif; /* 統一字體 */
+  font-size: 1rem;
 }
 
-ul.task-list li {
-  color: #333; /* 黑色 */
-  margin-bottom: 10px;
+/* 功能選項 */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: FangSong, "宋体", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #96c9aa;
+}
+
+/* 其他樣式調整 */
+h1 {
+  font-family: FangSong, "宋体", serif;
+  color: #00509e;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: FangSong, "宋体", serif;
+  color: #333;
+  margin-bottom: 20px;
 }
