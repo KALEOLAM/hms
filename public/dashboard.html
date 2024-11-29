@@ -7,34 +7,47 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- 容器 -->
   <div class="container">
+    <!-- 頁首 -->
     <header>
       <h1>Maryknoll Homework Management System</h1>
+      <!-- 顯示香港時間 -->
       <div class="current-time" id="current-time"></div>
+      <!-- 歡迎訊息 -->
+      <div id="welcome-message" class="welcome-message"></div>
+      <!-- 自動登出倒計時 -->
+      <div id="logout-timer" class="logout-timer"></div>
     </header>
+
+    <!-- 內容區 -->
     <div class="content">
       <!-- 日曆區域 -->
       <div class="calendar">
         <h3 id="current-month">載入中...</h3>
         <table id="calendar-table"></table>
       </div>
+
       <!-- 家課記錄區域 -->
       <div class="homework-section">
         <h2>家課記錄</h2>
         <ul class="task-list" id="homework-list"></ul>
       </div>
 
-      <!-- 新增的登出和功課上載選項 -->
+      <!-- 功能選項 -->
       <div class="action-buttons">
-        <a href="#" id="logout-btn">登出</a>
+        <a href="#" id="logout-btn">登出</a> | 
         <a href="nms.html" id="upload-homework-btn">功課上載</a>
       </div>
     </div>
+
+    <!-- 頁腳 -->
     <footer>
       <p>© 2024 Maryknoll Homework Management System</p>
     </footer>
   </div>
+
+  <!-- 引入 JavaScript 文件 -->
   <script src="script.js"></script>
 </body>
 </html>
-
