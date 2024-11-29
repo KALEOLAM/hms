@@ -1,6 +1,26 @@
 {
   "2024-11-28": [
-    { "subject": "地理", "description": "工作紙第3頁" },
-    { "subject": "數學", "description": "溫習題 p.1-12" }
+    {
+      "subject": "地理",
+      "group": "4C3",
+      "description": "工作紙第3頁"
+    },
+    {
+      "subject": "數學",
+      "group": "4E1",
+      "description": "溫習題 p.1-12"
+    }
+  ],
+  "2024-11-29": [
+    {
+      "subject": "中文",
+      "group": "不適用",
+      "description": "完成第5課練習題"
+    },
+    {
+      "subject": "英文",
+      "group": "4C5",
+      "description": "背誦單字表"
+    }
   ]
 }
