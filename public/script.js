@@ -160,3 +160,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const username = sessionStorage.getItem("username") || "用戶";
   document.getElementById("welcome-message").textContent = `Hi! ${username} 歡迎回來`;
 });
+
+// 科目選擇改變時觸發的事件
+document.getElementById("subject").addEventListener("change", function() {
+  const subject = this.value;
+  const groupContainer = document.getElementById("group-container");
+
+  // 若科目是中文、英文或數學，顯示組別選擇框，否則隱藏
+  if (["中文", "英文", "數學"].includes(subject)) {
+    groupContainer.style.display = "block";
+  } else {
+    groupContainer.style.display = "none";
+  }
+});
+
+// 初始化科目選擇
+document.addEventListener("DOMContentLoaded", function() {
+  const initialSubject = document.getElementById("subject").value;
+  if (["中文", "英文", "數學"].includes(initialSubject)) {
+    document.getElementById("group-container").style.display = "block";
+  } else {
+    document.getElementById("group-container").style.display = "none";
+  }
+});
