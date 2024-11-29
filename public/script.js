@@ -184,13 +184,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-document.getElementById("homework-form").addEventListener("submit", async function(e) {
+document.getElementById("homework-form").addEventListener("submit", function(e) {
   e.preventDefault(); // 防止表單提交刷新頁面
 
+  // 取得表單欄位的數據
   const subject = document.getElementById("subject").value;
-  const group = document.getElementById("group").value || "不適用"; 
+  const group = document.getElementById("group").value || "不適用"; // 預設為 "不適用" 以防沒有選擇
   const homework = document.getElementById("homework").value;
-  const note = document.getElementById("note").value || "";
+  const note = document.getElementById("note").value || ""; // 如果沒有備註就留空
 
   // 確保功課內容不為空
   if (!homework) {
@@ -198,25 +199,21 @@ document.getElementById("homework-form").addEventListener("submit", async functi
     return;
   }
 
-  const date = new Date().toISOString().split('T')[0];
-
-  // 從 localStorage 取得已儲存的數據，如果沒有則設為空物件
-  let homeworkData = JSON.parse(localStorage.getItem("homeworkData")) || {};
-
-  // 如果當前日期尚未有資料，初始化該日期為空數組
-  if (!homeworkData[date]) {
-    homeworkData[date] = [];
-  }
-
-  // 儲存新提交的功課
-  homeworkData[date].push({ subject, group, description: homework, note });
-
-  // 非同步儲存資料
-  localStorage.setItem("homeworkData", JSON.stringify(homeworkData));
-
-  // 顯示成功訊息
-  alert("功課內容已成功提交！");
-  
-  // 清空表單
-  document.getElementById("homework-form").reset();
+  // 使用 Fetch API 發送請求到伺服器
+  fetch("http://hk-p-1.node.flybirdhost.net:20005/submit-homework", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ subject, group, homework, note })  // 傳送表單資料
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);  // 顯示伺服器返回的訊息
+    document.getElementById("homework-form").reset();  // 清空表單
+  })
+  .catch(error => {
+    alert("發生錯誤，請稍後再試！");
+    console.error("錯誤:", error);
+  });
 });
