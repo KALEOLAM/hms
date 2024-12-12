@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>主頁 - Maryknoll Homework Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 容器 -->
+  <div class="container">
+    <!-- 頁首 -->
+    <header>
+      <h1>Maryknoll Homework Management System</h1>
+      
+      <!-- 顯示香港時間 -->
+      <div class="current-time" id="current-time">2024年11月01日 星期五 00:00:00</div>
+
+      <!-- 歡迎訊息 -->
+      <div id="welcome-message" class="welcome-message">用戶 歡迎回來</div>
+
+      <!-- 功能選項 -->
+      <div class="action-buttons">
+        <a href="#" id="logout-btn">登出</a> | 
+        <a href="nms.html" id="upload-homework-btn">功課上載</a>
+      </div>
+    </header>
+
+    <!-- 內容區 -->
+    <div class="content">
+      <!-- 日曆區域 -->
+      <div class="calendar">
+        <h3 id="current-month">載入中...</h3>
+        <table id="calendar-table"></table>
+      </div>
+
+      <!-- 家課記錄區域 -->
+      <div class="homework-section">
+        <h2>家課記錄</h2>
+        <ul class="task-list" id="homework-list"></ul>
+      </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+      <p>© 2024 Maryknoll Homework Management System</p>
+    </footer>
+  </div>
+
+  <!-- 引入 JavaScript 文件 -->
+  <script src="script.js"></script>
+</body>
+</html>

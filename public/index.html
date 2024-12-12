@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maryknoll Homework Management System</title>
+  <title>登入 - Maryknoll Homework Management System</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Login Page -->
-  <div class="login-container" id="login-container">
+  <!-- 登入頁面 -->
+  <div class="login-container">
     <h1>Maryknoll 家課管理系統</h1>
     <p>請輸入用戶名和密碼進行登錄</p>
     <form id="login-form">
@@ -27,39 +25,26 @@
     </form>
   </div>
 
-  <!-- Main Content -->
-  <div class="container hidden" id="main-container">
-    <header>
-      <h1>Maryknoll Homework Management System</h1>
-      <div class="current-time" id="current-time"></div>
-    </header>
-    <div class="content">
-      <!-- Left Section: Calendar -->
-      <div class="left-section">
-        <div class="class-info">
-          <h2>3C 班教師名單</h2>
-          <!-- 可以在這裡填入教師名單 -->
-        </div>
-        <div class="calendar">
-          <h3 id="current-month">載入中...</h3>
-          <table id="calendar-table"></table>
-        </div>
-      </div>
-      
-      <!-- Right Section: Homework List -->
-      <div class="right-section">
-        <h2>家課記錄</h2>
-        <ul class="task-list" id="homework-list">
-          <!-- 家課資料將在這裡顯示 -->
-        </ul>
-      </div>
-    </div>
-    <footer>
-      <img src="images/school_building.png" alt="校舍圖片" class="background-img">
-      <p>© 2024 Maryknoll Homework Management System</p>
-    </footer>
-  </div>
-  
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // 模擬用戶數據
+      const users = { user: "password" };
+
+      if (users[username] && users[username] === password) {
+        // 登入成功，將登入狀態保存在 sessionStorage
+        sessionStorage.setItem("loggedIn", true);
+        // 登入成功，跳轉至主頁
+        window.location.href = "dashboard.html";
+      } else {
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = "用戶名或密碼錯誤，請重試！";
+        errorMessage.style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>

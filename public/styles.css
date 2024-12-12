@@ -1,60 +1,72 @@
 /* 通用設置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Noto Serif SC', FangSong, "宋体", serif;
-  background-color: #f7f7fa;
   color: #333;
   line-height: 1.6;
+  background-image: url('images/school_building.png'); /* 確保圖片路徑正確 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  text-align: center; /* 使所有文字都置中 */
 }
 
-/* 登入頁面 */
+/* 避免文字被背景遮擋的調整 (半透明背景) */
+.container, .login-container {
+  background-color: rgba(255, 255, 255, 0.85); /* 半透明背景 */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 登入頁面設置 */
 .login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #e9f0fa;
-  text-align: center;
+  width: 400px;
+  margin: 100px auto;
 }
 
-.hidden {
-  display: none;
+h1 {
+  font-family: FangSong, "宋体", serif;
+  color: #00509e;
+  margin-bottom: 15px;
 }
 
-.login-container h1 {
-  font-size: 2.5rem;
-  color: #003366;
-  margin-bottom: 10px;
+p {
+  font-family: FangSong, "宋体", serif;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .input-group {
   margin-bottom: 15px;
-  max-width: 300px;
-  width: 100%;
+}
+
+.input-group label {
+  display: block;
+  font-family: FangSong, "宋体", serif;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
 }
 
 .input-group input {
   width: 100%;
-  padding: 10px;
-  font-family: FangSong, "宋体", serif;
-  border: 1px solid #ccc;
+  padding: 12px;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: FangSong, "宋体", serif; /* 統一字體 */
+  font-size: 1rem;
 }
 
+/* 登入按鈕設置 */
 .login-btn {
-  width: 300px;
-  padding: 10px;
-  background-color: #a8d5ba;
+  width: 100%;
+  padding: 15px;
+  background-color: #a8d5ba; /* 淺綠色 */
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-family: FangSong, "宋体", serif;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
@@ -62,77 +74,105 @@ body {
   background-color: #96c9aa;
 }
 
+/* 錯誤消息 */
 .error-message {
   color: #d9534f;
-  margin-top: 10px;
   font-weight: bold;
+  margin-top: 10px;
   display: none;
 }
 
-/* 主頁面 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  color: #003366;
-}
-
-.current-time {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  color: #00509e;
-}
-
-/* 左側日曆 */
+/* 月曆區域 */
 .calendar {
+  width: 50%; /* 月曆寬度適中 */
+  margin: 20px auto; /* 置中顯示 */
   background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.2rem; /* 增加字體大小 */
 }
 
+/* 月曆表格 */
 .calendar table {
   width: 100%;
   border-collapse: collapse;
 }
 
 .calendar th, .calendar td {
-  text-align: center;
-  padding: 10px;
+  padding: 16px; /* 調整格子的內距 */
   border: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.4rem; /* 增大字體大小 */
+  cursor: pointer;
 }
 
+.calendar th {
+  background-color: #f0f0f0;
+}
+
+/* 高亮今天的日期 */
 .calendar .today {
-  background-color: #ffe599;
+  background-color: #ffe599; /* 淺黃色 */
   font-weight: bold;
 }
 
-/* 校舍圖片設置 */
-.background-img {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0.2;
-  width: 100%;
-  z-index: 1;
-  pointer-events: none;
+/* 高亮用戶選擇的日期 */
+.calendar .selected {
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: white;
 }
 
-footer {
-  text-align: center;
-  margin-top: 20px;
-  position: relative;
-  z-index: 2;
+/* 滑鼠懸停時變更格子的顏色 */
+.calendar td:hover {
+  background-color: #f0f0f0;
+}
+
+/* 響應式設計：小屏幕時 */
+@media (max-width: 768px) {
+  .calendar {
+    width: 80%;
+    margin: 10px auto;
+  }
+}
+
+/* 科目與組別下拉式選單 */
+.input-group select {
+  width: 100%; /* 設置選單的寬度為100% */
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: FangSong, "宋体", serif; /* 統一字體 */
+  font-size: 1rem;
+}
+
+/* 功能選項 */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #a8d5ba; /* 淺綠色 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: FangSong, "宋体", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #96c9aa;
+}
+
+/* 其他樣式調整 */
+h1 {
+  font-family: FangSong, "宋体", serif;
+  color: #00509e;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: FangSong, "宋体", serif;
+  color: #333;
+  margin-bottom: 20px;
 }
